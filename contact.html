@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ช่องทางการติดต่อ | OAKky</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Modules -->
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="components.css">
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+    <!-- ส่วนหัวข้อหลักชิดซ้าย ดีไซน์เรียบร้อยสวยงาม -->
+    <header class="page-header-left">
+        <h1>ช่องทางการติดต่อ</h1>
+        <p class="subtitle">Get in Touch with OAKky</p>
+    </header>
+
+    <!-- เมนู CardNav พร้อมปุ่ม Dark Mode และ ปุ่มแปลภาษา -->
+    <div class="card-nav-container">
+        <nav class="card-nav" id="cardNav">
+            <div class="card-nav-top">
+                <div class="hamburger-menu" id="hamburgerBtn" role="button" aria-label="Toggle menu" aria-expanded="false" tabindex="0">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+
+                <div class="logo-container">
+                    <span class="logo-text">OAKky Portfolio</span>
+                </div>
+
+                <div class="nav-right-group">
+                    <!-- ปุ่มสลับ Dark Mode -->
+                    <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                        <span class="theme-icon sun-icon">☀️</span>
+                        <span class="theme-icon moon-icon">🌙</span>
+                    </button>
+
+                    <!-- ปุ่มแปลภาษาแบบ Lazy Load -->
+                    <div class="translate-wrapper">
+                        <button id="customTranslateBtn" class="translate-btn" type="button">🌐 แปลภาษา</button>
+                        <div id="google_translate_element"></div>
+                    </div>
+
+                    <a href="contact.html" class="card-nav-cta-button">ติดต่อเรา</a>
+                </div>
+            </div>
+
+            <div class="card-nav-content" aria-hidden="true">
+                <div class="nav-card nav-card-dark">
+                    <div class="nav-card-label">หน้าแรก</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="index.html">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            นามบัตรดิจิทัล
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-card nav-card-medium">
+                    <div class="nav-card-label">ติดต่อ & ข้อมูล</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="contact.html">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            ช่องทางติดต่อ
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-card nav-card-light">
+                    <div class="nav-card-label">โซเชียล</div>
+                    <div class="nav-card-links">
+                        <a class="nav-card-link" href="https://aokza.github.io/OAKky/" target="_blank">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            GitHub
+                        </a>
+                        <a class="nav-card-link" href="https://www.youtube.com/@OAKZA_AZ./featured" target="_blank">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            YouTube
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <section>
+            <h2>🌐 ช่องทางติดต่อหลัก (Contact & Socials)</h2>
+            <p class="section-desc">สามารถติดตามผลงาน ทักทาย หรือพูดคุยแลกเปลี่ยนเรื่องเทคโนโลยีและเกมได้ตามช่องทางนี้ครับ:</p>
+
+            <div class="contact-item">
+                <div>
+                    <strong>🌐 GitHub Portfolio</strong>
+                    <p class="card-text">aokza.github.io/OAKky</p>
+                </div>
+                <a href="https://aokza.github.io/OAKky/" target="_blank" class="link-btn">ไปยังเว็บไซต์</a>
+            </div>
+
+            <div class="contact-item">
+                <div>
+                    <strong>📹 YouTube Channel (@OAKZA_AZ)</strong>
+                    <p class="card-text">คอนเทนต์เกม คอนเทนต์เทคโนโลยี และเนื้อหาอื่นๆ ตามไลฟ์สไตล์</p>
+                </div>
+                <a href="https://www.youtube.com/@OAKZA_AZ./featured" target="_blank" class="link-btn">เยี่ยมชมช่อง</a>
+            </div>
+
+            <div class="contact-item">
+                <div>
+                    <strong>📸 Instagram / Social Media</strong>
+                    <p class="card-text">ติดตามไลฟ์สไตล์ ชีวิตมหาลัย และอัปเดตผลงาน</p>
+                </div>
+                <span class="highlight-text">[ใส่ Link IG / Social]</span>
+            </div>
+        </section>
+
+        <section>
+            <div class="contact-item highlight-border" style="margin-bottom: 0;">
+                <div>
+                    <strong>🎓 ประวัติการศึกษาเพิ่มเติม</strong>
+                    <p class="card-text">ดูรายละเอียดประวัติการศึกษา สายงานที่สนใจ และเกียรติบัตรการอบรมทั้งหมด</p>
+                </div>
+                <a href="about.html" class="link-btn">ดูประวัติการศึกษา</a>
+            </div>
+        </section>
+
+        <section>
+            <h2>✉️ ฝากข้อความติดต่อ (Send Message)</h2>
+            <p class="section-desc">พิมพ์ข้อความและรายละเอียดเรื่องที่ต้องการติดต่อไว้ได้เลยครับ ข้อความจะถูกบันทึกลง Google Sheets ของผม และจะรีบตอบกลับโดยเร็วที่สุด:</p>
+
+            <form id="contactForm" class="contact-form">
+                <!-- Honeypot Trap ฟิลด์ซ่อนสำหรับดักบอท -->
+                <input type="text" name="website" style="display:none !important;" tabindex="-1" autocomplete="off">
+
+                <div class="form-group">
+                    <label for="name">ชื่อของคุณ / ชื่อหน่วยงาน:</label>
+                    <input type="text" id="name" name="name" placeholder="ระบุชื่อผู้ติดต่อ" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">อีเมลของคุณ (สำหรับตอบกลับ):</label>
+                    <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">เรื่องที่ต้องการติดต่อ:</label>
+                    <input type="text" id="subject" name="subject" placeholder="เช่น สอบถามเรื่องงาน, สนใจร่วมงาน, พูดคุยทั่วไป" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">รายละเอียดข้อความ:</label>
+                    <textarea id="message" name="message" rows="5" placeholder="พิมพ์ข้อความรายละเอียดที่นี่..." required></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn" class="submit-btn">📩 ส่งข้อความ</button>
+                <p id="formStatus" style="display: none; margin-top: 10px; font-weight: 600;"></p>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Korrawit Saenmueangchin (OAKky). All Rights Reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
