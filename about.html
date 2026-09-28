@@ -19,7 +19,7 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "นาย กรวิชญ์ แสนเมืองชิน",
-      "alternateName": ["Korawit Saenmueangchin หรือ Korrawit Saenmueangchin ", "OAKky"],
+      "alternateName": ["Korawit Saenmueangchin หรือ Korrawit Saenmueangchin", "OAKky"],
       "description": "สรุปประวัติการศึกษาคร่าวๆ",
       "alumniOf": [
         {
@@ -151,11 +151,11 @@
                             <p class="section-desc" style="margin-bottom: 4px;">สามารถ ตรวจสอบข้อมูลอ้างอิง ได้ที่ลิงก์ต่อไปนี้:</p>
                             <p class="card-text" style="font-size: 0.9rem; margin-bottom: 2px;">
                                 • รายละเอียดประกาศ ม.4: 
-                                <a href="https://www.suanchon.ac.th/news/2563" target="_blank" class="inline-link">https://www.suanchon.ac.th/news/2563</a>
+                                <a href="https://www.suanchon.ac.th/news/2563" target="_blank" rel="noopener noreferrer" class="inline-link">https://www.suanchon.ac.th/news/2563</a>
                             </p>
                             <p class="card-text" style="font-size: 0.9rem; margin-bottom: 0;">
                                 • รายละเอียดประกาศ ม.1: 
-                                <a href="https://www.suanchon.ac.th/news/1443" target="_blank" class="inline-link">https://www.suanchon.ac.th/news/1443</a>
+                                <a href="https://www.suanchon.ac.th/news/1443" target="_blank" rel="noopener noreferrer" class="inline-link">https://www.suanchon.ac.th/news/1443</a>
                             </p>
                         </div>
                     </div>
@@ -172,7 +172,7 @@
             <h2>📜 การอบรมและเกียรติบัตร (Certificates & Credentials)</h2>
             <p class="section-desc" style="margin-bottom: 15px;">ตรวจสอบใบรับรองและประวัติการเรียนรู้ออนไลน์ทั้งหมดได้ที่ลิงก์นี้:</p>
             <div style="margin-bottom: 20px;">
-                <a href="https://learner.thaimooc.ac.th/eprofile/korawit.sau/public" target="_blank" class="link-btn">
+                <a href="https://learner.thaimooc.ac.th/eprofile/korawit.sau/public" target="_blank" rel="noopener noreferrer" class="link-btn">
                     🌐 ตรวจสอบ Thai MOOC Public Profile
                 </a>
             </div>
@@ -212,14 +212,16 @@
     <script>
         document.addEventListener('keyup', (e) => {
             if (e.key === 'PrintScreen') {
-                navigator.clipboard.writeText('');
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText('');
+                }
                 alert('⚠️ รูปภาพและเนื้อหาในหน้านี้ถูกคุ้มครองลิขสิทธิ์ ไม่อนุญาตให้บันทึกภาพ');
             }
         });
 
         document.addEventListener('keydown', (e) => {
             if (
-                e.ctrlKey && (e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P') ||
+                (e.ctrlKey && (e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P')) ||
                 e.keyCode === 123 || 
                 (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'S' || e.key === 's'))
             ) {
