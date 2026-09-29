@@ -1,33 +1,44 @@
+/* ==========================================
+   NAVIGATION BAR (APPLE MINIMAL & PILL BUTTONS)
+   ========================================== */
 .card-nav-container {
     position: sticky;
     top: 1rem;
-    margin: 10px auto 30px auto;
+    margin: 10px auto 26px auto;
     width: 95%;
-    max-width: 1100px;
+    max-width: 1080px;
     z-index: 999;
 }
 
 .card-nav {
-    height: 65px;
+    height: 62px;
     background-color: var(--nav-bg);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid var(--border-color);
-    border-radius: 1rem;
+    backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+    border: 1px solid var(--nav-border);
+    border-radius: 980px;
     box-shadow: var(--shadow-sm);
     position: relative;
     overflow: hidden;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
+}
+
+.card-nav.open {
+    border-radius: 24px;
+}
+
+.card-nav:hover {
+    border-color: var(--border-hover);
 }
 
 .card-nav-top {
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 65px;
+    height: 62px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 1.25rem;
+    padding: 0.5rem 1.2rem;
     z-index: 2;
 }
 
@@ -36,92 +47,160 @@
     flex-direction: column;
     justify-content: center;
     cursor: pointer;
-    gap: 6px;
-    width: 32px;
-    height: 32px;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    padding: 7px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.hamburger-menu:hover {
+    background-color: var(--border-color);
 }
 
 .hamburger-line {
-    width: 24px;
+    width: 20px;
     height: 2px;
     background-color: var(--text-primary);
     border-radius: 2px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), background-color 0.3s ease;
 }
 
 .logo-container {
     position: absolute;
     left: 50%; top: 50%;
     transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 
 .logo-text { 
     font-weight: 600; 
-    font-size: 1.15rem; 
+    font-size: 1.08rem; 
     color: var(--text-primary);
+    letter-spacing: -0.015em;
 }
 
 .nav-right-group { 
     display: flex; 
     align-items: center; 
-    gap: 12px; 
+    gap: 8px; 
 }
 
-.translate-btn, .theme-toggle-btn {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
-    padding: 6px 14px;
-    border-radius: 30px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.translate-btn:hover, .theme-toggle-btn:hover {
-    background-color: var(--border-color);
-}
-
-.theme-toggle-btn { 
-    width: 38px; 
-    height: 38px; 
-    padding: 0; 
-    display: flex;
+/* ==========================================
+   APPLE STYLE PILL BUTTONS (NAV CONTROLS)
+   ========================================== */
+.nav-pill-btn {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 6px;
+    padding: 6px 13px;
+    border-radius: 980px;
+    font-size: 0.84rem;
+    font-weight: 500;
+    font-family: inherit;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.nav-pill-btn:hover {
+    background: var(--border-color);
+    transform: scale(1.03);
+}
+
+.nav-pill-btn:active {
+    transform: scale(0.97);
+}
+
+/* Zero-G Antigravity Button */
+.gravity-btn {
+    color: var(--text-primary);
+}
+
+.gravity-btn.active-zero-g {
+    background: linear-gradient(135deg, #ff3b30, #ff9500);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 0 16px rgba(255, 59, 48, 0.45);
+    animation: zeroGPulse 1.8s infinite;
+}
+
+@keyframes zeroGPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn { 
+    width: 36px; 
+    height: 36px; 
+    padding: 0; 
     border-radius: 50%;
 }
 
-.theme-icon { display: none; font-size: 1rem; }
+.theme-icon { 
+    display: none; 
+    font-size: 1rem; 
+    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.theme-toggle-btn:hover .theme-icon {
+    transform: rotate(20deg) scale(1.1);
+}
+
 body:not(.dark-mode) .moon-icon { display: inline; }
 body.dark-mode .sun-icon { display: inline; }
 
-.card-nav-cta-button {
-    background-color: var(--btn-bg);
-    color: var(--btn-text);
-    padding: 8px 18px;
-    border-radius: 0.75rem;
-    text-decoration: none;
+/* Language Switcher Button */
+.lang-btn {
+    min-width: 60px;
     font-weight: 600;
-    font-size: 0.9rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.lang-flag {
+    font-size: 0.95rem;
+}
+
+/* Apple Blue Primary CTA */
+.card-nav-cta-button {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    padding: 7px 18px;
+    border-radius: 980px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.88rem;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+    white-space: nowrap;
 }
 
 .card-nav-cta-button:hover {
-    opacity: 0.9;
     transform: scale(1.02);
+    opacity: 0.92;
 }
 
+.card-nav-cta-button:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================
+   DROPDOWN MENU CONTENT
+   ========================================== */
 .card-nav-content {
     position: absolute;
-    top: 65px; left: 0; right: 0; bottom: 0;
-    padding: 0.75rem 1.25rem;
+    top: 62px; left: 0; right: 0; bottom: 0;
+    padding: 0.8rem 1.2rem 1.1rem 1.2rem;
     display: flex;
     gap: 12px;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
 }
 
 .card-nav.open .card-nav-content { 
@@ -134,24 +213,32 @@ body.dark-mode .sun-icon { display: inline; }
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     color: var(--text-primary);
-    border-radius: 0.75rem;
-    padding: 12px 16px;
+    border-radius: 16px;
+    padding: 14px 16px;
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
 }
 
 .nav-card-label {
-    font-size: 0.8rem;
+    font-size: 0.76rem;
     color: var(--text-muted);
     font-weight: 600;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .nav-card-links {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 }
 
 .nav-card-link { 
@@ -159,15 +246,46 @@ body.dark-mode .sun-icon { display: inline; }
     text-decoration: none; 
     font-size: 0.9rem;
     font-weight: 500;
-    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-card-link svg {
+    transition: transform 0.2s ease;
 }
 
 .nav-card-link:hover {
     color: var(--accent-color);
+    transform: translateX(3px);
+}
+
+.nav-card-link:hover svg {
+    transform: translate(2px, -2px);
 }
 
 @media (max-width: 768px) {
     .logo-container {
-        display: none; /* ซ่อนโลโก้ตรงกลางบนจอมือถือ เพื่อไม่ให้เบียดปุ่ม */
+        display: none;
+    }
+    .card-nav-top {
+        padding: 0.45rem 0.8rem;
+    }
+    .nav-right-group {
+        gap: 6px;
+    }
+    .nav-pill-btn {
+        padding: 5px 9px;
+        font-size: 0.8rem;
+    }
+    .card-nav-cta-button {
+        padding: 6px 12px;
+        font-size: 0.82rem;
+    }
+    .card-nav-content {
+        flex-direction: column;
+        gap: 8px;
+        padding: 0.8rem;
     }
 }

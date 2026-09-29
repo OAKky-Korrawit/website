@@ -5,19 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Website OAKky</title>
     <meta name="google-site-verification" content="ry1bEI9LlEac2bvmi_BVXJkJGjsMwQnbC46SNpqn3FY" />
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- CSS Modules -->
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="components.css">
 
-    <!-- GSAP CDN -->
+    <!-- Matter.js Physics CDN & GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    
 </head>
 <body>
 
-    <!-- เมนู CardNav (วางไว้บนสุดเหมือนเดิม) -->
+    <!-- เมนู CardNav สไตล์ Apple Minimal -->
     <div class="card-nav-container">
         <nav class="card-nav" id="cardNav">
             <div class="card-nav-top">
@@ -27,86 +28,108 @@
                 </div>
 
                 <div class="logo-container">
-                    <span class="logo-text">OAKky Portfolio</span>
+                    <span class="logo-text" data-i18n="nav_logo">OAKky Portfolio</span>
                 </div>
 
                 <div class="nav-right-group">
+                    <!-- ปุ่มเปิด/ปิด Antigravity Physics -->
+                    <button id="gravityToggleBtn" class="nav-pill-btn gravity-btn" aria-label="Toggle Antigravity" title="เปิด/ปิดโหมดฟิสิกส์ (Antigravity)">
+                        <span class="gravity-icon">🪐</span>
+                        <span class="gravity-text" data-i18n="nav_gravity">Zero-G</span>
+                    </button>
+
+                    <!-- ปุ่มสลับภาษา TH / EN -->
+                    <button id="langToggleBtn" class="nav-pill-btn lang-btn" aria-label="Switch Language" title="สลับภาษา TH / EN">
+                        <span class="lang-flag">🌐</span>
+                        <span id="langLabel" class="lang-text">EN</span>
+                    </button>
+
                     <!-- ปุ่มสลับ Dark Mode -->
-                    <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                    <button id="themeToggleBtn" class="nav-pill-btn theme-toggle-btn" aria-label="Toggle dark mode" title="สลับโหมดมืด/สว่าง">
                         <span class="theme-icon sun-icon">☀️</span>
                         <span class="theme-icon moon-icon">🌙</span>
                     </button>
 
-                    <!-- ปุ่มแปลภาษา -->
-                    <div class="translate-wrapper">
-                        <button id="customTranslateBtn" class="translate-btn" type="button">🌐 แปลภาษา</button>
-                        <div id="google_translate_element"></div>
-                    </div>
-
-                    <a href="contact.html" class="card-nav-cta-button">ติดต่อเรา</a>
+                    <a href="contact.html" class="card-nav-cta-button" data-i18n="nav_cta">ติดต่อเรา</a>
                 </div>
             </div>
 
             <div class="card-nav-content" aria-hidden="true">
-                <div class="nav-card nav-card-dark">
-                    <div class="nav-card-label">หน้าแรก</div>
+                <div class="nav-card">
+                    <div class="nav-card-label" data-i18n="nav_home">หน้าแรก</div>
                     <div class="nav-card-links">
-                        <a class="nav-card-link" href="index.html">นามบัตรดิจิทัล</a>
+                        <a class="nav-card-link" href="index.html">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            <span data-i18n="nav_home_sub">นามบัตรดิจิทัล</span>
+                        </a>
                     </div>
                 </div>
 
-                <div class="nav-card nav-card-medium">
-                    <div class="nav-card-label">ติดต่อ & ข้อมูล</div>
+                <div class="nav-card">
+                    <div class="nav-card-label" data-i18n="nav_contact_menu">ติดต่อ & ข้อมูล</div>
                     <div class="nav-card-links">
-                        <a class="nav-card-link" href="contact.html">ช่องทางติดต่อ</a>
+                        <a class="nav-card-link" href="contact.html">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            <span data-i18n="nav_contact_sub">ช่องทางติดต่อ</span>
+                        </a>
+                        <a class="nav-card-link" href="about.html">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            <span data-i18n="nav_edu_sub">ประวัติการศึกษา</span>
+                        </a>
                     </div>
                 </div>
 
-                <div class="nav-card nav-card-light">
-                    <div class="nav-card-label">โซเชียล</div>
+                <div class="nav-card">
+                    <div class="nav-card-label" data-i18n="nav_socials">โซเชียล</div>
                     <div class="nav-card-links">
-                        <a class="nav-card-link" href="https://aokza.github.io/OAKky/" target="_blank">GitHub</a>
-                        <a class="nav-card-link" href="https://www.youtube.com/@OAKZA_AZ./featured" target="_blank">YouTube</a>
+                        <a class="nav-card-link" href="https://aokza.github.io/OAKky/" target="_blank">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            GitHub
+                        </a>
+                        <a class="nav-card-link" href="https://www.youtube.com/@OAKZA_AZ./featured" target="_blank">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            YouTube
+                        </a>
                     </div>
                 </div>
             </div>
         </nav>
     </div>
 
-    <!-- ส่วนที่เพิ่มใหม่: คลิปวิดีโอไฮไลท์ขนาดใหญ่ด้านบนสุด -->
-    <div class="container" style="margin-top: 30px;">
-        <section class="featured-video-section" style="background-color: var(--card-bg); border: 1px solid var(--border-color); padding: 24px; border-radius: 1.25rem; box-shadow: var(--shadow-sm);">
+    <!-- ส่วนคลิปวิดีโอไฮไลท์ด้านบน -->
+    <div class="container" style="margin-top: 24px;">
+        <section class="featured-video-section">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-                <h2 style="font-size: 1.3rem; color: var(--text-primary); margin: 0;">🎬 อยากให้แชทแสดงผลสตรีม? ลองวิธีนี้ส์! | OBS</h2>
-                <span style="font-size: 0.85rem; color: var(--text-muted); background: rgba(2, 132, 199, 0.1); padding: 4px 10px; border-radius: 20px;">Featured Highlight</span>
+                <h2 style="font-size: 1.3rem; color: var(--text-primary); margin: 0;" data-i18n="feat_title">🎬 อยากให้แชทแสดงผลสตรีม? ลองวิธีนี้ส์! | OBS</h2>
+                <span class="hero-badge" style="margin: 0;" data-i18n="feat_badge">Featured Highlight</span>
             </div>
-<!-- ส่วนใส่ลิ้งวีดิโอ หรือ คลิป You tube -->
+
             <!-- กล่องครอบวิดีโอ YouTube แบบ Responsive (16:9) -->
-                         <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 1rem; background: #000;">
-                             <iframe src="https://www.youtube.com/embed/R8Jveljae8g" 
-                                     title="YouTube video player" 
-                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                     allowfullscreen>
-                             </iframe>
-                         </div>
+            <div style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 14px; background: #000;">
+                <iframe src="https://www.youtube.com/embed/R8Jveljae8g" 
+                        title="YouTube video player" 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
 
             <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-                <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">แนะนำเทคนิคการตั้งค่าสตรีมมิ่งผ่าน OBS ง่ายๆ ใครก็ทำได้</p>
-                <a href="https://www.youtube.com/@OAKZA_AZ." target="_blank" class="link-btn" style="text-decoration: none;">Watch on YouTube 📺</a>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;" data-i18n="feat_desc">แนะนำเทคนิคการตั้งค่าสตรีมมิ่งผ่าน OBS ง่ายๆ ใครก็ทำได้</p>
+                <a href="https://www.youtube.com/@OAKZA_AZ." target="_blank" class="link-btn" style="text-decoration: none;" data-i18n="feat_watch">Watch on YouTube 📺</a>
             </div>
         </section>
     </div>
 
     <!-- Header ชิดซ้าย ดึงข้อมูลโปรไฟล์จาก Google Sheets -->
-    <header class="business-card-header" style="margin-top: 20px;">
+    <header class="business-card-header" style="margin-top: 16px;">
         <div class="header-content">
             <img id="profileAvatar" src="images/SKC.jpg" alt="OAK Profile" class="profile-avatar">
             <div class="header-text">
-                <h1 id="profileName">OAKky</h1>
-                <p id="profileBio" class="subtitle">เว็บไซต์นี้เป็นพื้นที่จัดเก็บและเผยแพร่ข้อมูลประวัติอย่างเป็นทางการของ</p>
+                <h1 id="profileName" data-i18n="profile_name">OAKky</h1>
+                <p id="profileBio" class="subtitle" data-i18n="profile_bio">เว็บไซต์นี้เป็นพื้นที่จัดเก็บและเผยแพร่ข้อมูลประวัติอย่างเป็นทางการของ</p>
                 <div>
-                    <span class="badge-msu">🎓 (ปัจจุบัน) กำลังศึกษาอยู่ มหาวิทยาลัยมหาสารคาม | นิสิต CS</span>
+                    <span class="badge-msu" data-i18n="badge_msu">🎓 (ปัจจุบัน) กำลังศึกษาอยู่ มหาวิทยาลัยมหาสารคาม | นิสิต CS</span>
                 </div>
             </div>
         </div>
@@ -115,15 +138,15 @@
     <!-- คอนเทนเนอร์แสดงผลงานแบบ Dynamic จาก Google Sheets -->
     <div class="container">
         <section>
-            <h2>🌟 ผลงานและช่องทางการติดตามผลงานต่างๆ</h2>
+            <h2 data-i18n="works_title">🌟 ผลงานและช่องทางการติดตามผลงานต่างๆ</h2>
             <div id="worksGrid" class="grid">
-                <p class="loading-text">⏳ กำลังโหลดข้อมูลผลงานจาก Google Sheets...</p>
+                <p class="loading-text" data-i18n="loading_works">⏳ กำลังโหลดข้อมูลผลงานจาก Google Sheets...</p>
             </div>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2026 Korrawit Saenmueangchin (OAKky). All Rights Reserved.</p>
+        <p data-i18n="footer_text">&copy; 2026 Korrawit Saenmueangchin (OAKky). All Rights Reserved.</p>
     </footer>
 
     <script src="main.js"></script>
