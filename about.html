@@ -20,7 +20,7 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "นาย กรวิชญ์ แสนเมืองชิน",
-      "alternateName": ["Korawit Saenmueangchin หรือ Korrawit Saenmueangchin ", "OAKky"],
+      "alternateName": ["Korawit Saenmueangchin หรือ Korrawit Saenmueangchin", "OAKky"],
       "description": "สรุปประวัติการศึกษาคร่าวๆ",
       "alumniOf": [
         {
@@ -225,14 +225,16 @@
     <script>
         document.addEventListener('keyup', (e) => {
             if (e.key === 'PrintScreen') {
-                navigator.clipboard.writeText('');
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText('');
+                }
                 alert('⚠️ รูปภาพและเนื้อหาในหน้านี้ถูกคุ้มครองลิขสิทธิ์ ไม่อนุญาตให้บันทึกภาพ');
             }
         });
 
         document.addEventListener('keydown', (e) => {
             if (
-                e.ctrlKey && (e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P') ||
+                (e.ctrlKey && (e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P')) ||
                 e.keyCode === 123 || 
                 (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'S' || e.key === 's'))
             ) {
